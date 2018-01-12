@@ -1,5 +1,5 @@
 {
-  "name": "firebase-browser",
+  "name": "@doubledutch/firebase-browser",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -8,6 +8,9 @@
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-scripts": "1.0.17"
+  },
+  "bin": {
+    "doubledutch-firebase-browser": "./node_modules/react-scripts/bin/react-scripts.js start"
   },
   "scripts": {
     "start": "react-scripts start",

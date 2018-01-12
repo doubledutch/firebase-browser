@@ -1,7 +1,7 @@
 {
   "name": "@doubledutch/firebase-browser",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "dependencies": {
     "@doubledutch/firebase-connector": "^3.2.3",
     "query-string": "^5.0.1",

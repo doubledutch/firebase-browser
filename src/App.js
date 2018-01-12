@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react'
 import './App.css'
 
 import FirebaseConnector from '@doubledutch/firebase-connector'
-const extension = document.location.hash ? document.location.hash.substring(1) : 'myextension'
+const extension = document.location.hash ? document.location.hash.substring(1) : ''
 const client = {
   currentEvent: {id: 'sample-event-id'},
   region: 'none',
@@ -20,7 +20,7 @@ const publicAdminRef = fbc.database.public.adminRef()
 const publicAllRef = fbc.database.public.allRef()
 
 let foundData = false
-setTimeout(() => foundData || document.location.reload(true), 5000)
+extension && setTimeout(() => foundData || document.location.reload(true), 5000)
 
 export default class App extends PureComponent {
   constructor() {
@@ -40,27 +40,44 @@ export default class App extends PureComponent {
     return (
       <div>
         <header className="App-header">
-          <input type="text" value={this.state.extension} ref="" onChange={this.updateExtension} />&nbsp;
+          <span>sample-event-id: </span>
+          <input
+            type="text"
+            value={this.state.extension}
+            onChange={this.updateExtension}
+            placeholder="extension"
+            onKeyDown={e => e.keyCode === 13 && document.location.reload(true)}
+          />&nbsp;
           <a href={`#${this.state.extension}`} onClick={() => document.location.reload(true)}>Update</a>
         </header>
         <div className="App-main">
-          <h2>private/adminable/users</h2>
+          <h2>private/adminable/users <Deleter reference={adminableUsersRef}/></h2>
           <Listener reference={adminableUsersRef} />
 
-          <h2>private/admin</h2>
+          <h2>private/admin <Deleter reference={adminRef}/></h2>
           <Listener reference={adminRef} />
 
-          <h2>public/users</h2>
+          <h2>public/users <Deleter reference={publicUsersRef}/></h2>
           <Listener reference={publicUsersRef} />
 
-          <h2>public/admin</h2>
+          <h2>public/admin <Deleter reference={publicAdminRef}/></h2>
           <Listener reference={publicAdminRef} />
 
-          <h2>public/all</h2>
+          <h2>public/all <Deleter reference={publicAllRef}/></h2>
           <Listener reference={publicAllRef} />
         </div>
       </div>
     )
+  }
+}
+
+class Deleter extends PureComponent {
+  render() {
+    return <button onClick={this.delete}>Delete data</button>
+  }
+
+  delete = () => {
+    this.props.reference.remove()
   }
 }
 

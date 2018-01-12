@@ -12,6 +12,10 @@
   "bin": {
     "doubledutch-firebase-browser": "./node_modules/react-scripts/bin/react-scripts.js start"
   },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/doubledutch/firebase-browser.git"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

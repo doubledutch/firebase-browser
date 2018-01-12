@@ -1,0 +1,27 @@
+.App-header {
+  text-align: center;
+  background-color: #222;
+  padding: 10px;
+  color: white;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-main {
+  padding: 0 5px;
+}
+
+.Node {
+  display: inline;
+  font-size: large;
+  overflow-x: hidden;
+  white-space: nowrap;
+}
+
+.Node ul {
+  margin: 0 2px;
+  display: block;
+  -webkit-padding-start: 20px;
+}

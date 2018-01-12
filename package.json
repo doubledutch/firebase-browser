@@ -1,6 +1,6 @@
 {
   "name": "@doubledutch/firebase-browser",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "private": false,
   "dependencies": {
     "@doubledutch/firebase-connector": "^3.2.3",
@@ -10,7 +10,7 @@
     "react-scripts": "1.0.17"
   },
   "bin": {
-    "doubledutch-firebase-browser": "./start.sh"
+    "doubledutch-firebase-browser": "./start.js"
   },
   "repository": {
     "type": "git",

@@ -2,8 +2,7 @@ import React, { PureComponent } from 'react'
 import './App.css'
 
 import FirebaseConnector from '@doubledutch/firebase-connector'
-const queryString = require('query-string')
-const {extension} = queryString.parse(document.location.search)
+const extension = document.location.hash ? document.location.hash.substring(1) : 'myextension'
 const client = {
   currentEvent: {id: 'sample-event-id'},
   region: 'none',
@@ -20,19 +19,29 @@ const publicUsersRef = fbc.database.public.usersRef()
 const publicAdminRef = fbc.database.public.adminRef()
 const publicAllRef = fbc.database.public.allRef()
 
+let foundData = false
+setTimeout(() => foundData || document.location.reload(true), 5000)
+
 export default class App extends PureComponent {
   constructor() {
     super()
+    this.state = { extension }
   }
 
   componentDidMount() {
     fbc.signinAdmin().then(u => this.user = u)
   }
+  updateExtension = e => {
+    const extension = e.target.value
+    this.setState({extension})
+    document.location.href = `#${extension}`
+  }
   render() {
     return (
       <div>
         <header className="App-header">
-          <h1 className="App-title">{extension}</h1>
+          <input type="text" value={this.state.extension} ref="" onChange={this.updateExtension} />&nbsp;
+          <a href={`#${this.state.extension}`} onClick={() => document.location.reload(true)}>Update</a>
         </header>
         <div className="App-main">
           <h2>private/adminable/users</h2>
@@ -76,6 +85,7 @@ class Listener extends PureComponent {
   listen(reference) {
     if (reference) {
       reference.on('value', data => {
+        foundData = true
         this.setState({data: data.val()})
       })
     }

@@ -3,10 +3,16 @@
   background-color: #222;
   padding: 10px;
   color: white;
+  font-size: 1.5em;
 }
 
-.App-title {
+.App-header input {
   font-size: 1.5em;
+  text-align: center;
+}
+
+.App-header a {
+  color: white;
 }
 
 .App-main {

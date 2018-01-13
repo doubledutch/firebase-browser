@@ -2,4 +2,4 @@
 
 const {fork} = require('child_process')
 const path = require('path')
-fork(path.join(__dirname, 'node_modules/react-scripts/bin/react-scripts'), ['start'])
+fork(path.join(__dirname, 'node_modules/react-scripts/bin/react-scripts'), ['start'], {cwd: __dirname})

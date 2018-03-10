@@ -12,6 +12,7 @@
   "bin": {
     "doubledutch-firebase-browser": "./start.js"
   },
+  "license": "apache-2.0",
   "repository": {
     "type": "git",
     "url": "git://github.com/doubledutch/firebase-browser.git"

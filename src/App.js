@@ -103,10 +103,10 @@ class Listener extends PureComponent {
     this.state = {}
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (this.props.reference !== nextProps.reference) {
+  componentDidUpdate(prevProps) {
+    if (this.props.reference !== prevProps.reference) {
       if (this.props.reference) this.props.reference.off('value')
-      this.listen(nextProps.reference)
+      this.listen(prevProps.reference)
     }
   }
 
